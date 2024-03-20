@@ -33,7 +33,7 @@
 #ifdef ASIO_STANDALONE
     #include <asio/ssl.hpp>
 #else
-    #include <boost/asio/ssl.hpp>
+    #include <asio/ssl.hpp>
 #endif
 
 #endif // WEBSOCKETPP_COMMON_ASIO_SSL_HPP

@@ -47,7 +47,7 @@
 #include <websocketpp/logger/stub.hpp>
 //#include <websocketpp/logger/basic.hpp>
 
-#include <boost/asio.hpp>
+#include <asio.hpp>
 
 // Accept a connection, read data, and discard until EOF
 void run_dummy_server(int port) {
@@ -61,7 +61,7 @@ void run_dummy_server(int port) {
         acceptor.accept(socket);
         for (;;) {
             char data[512];
-            boost::system::error_code ec;
+            asio::error_code ec;
             socket.read_some(boost::asio::buffer(data), ec);
             if (ec == boost::asio::error::eof) {
                 break;
@@ -72,7 +72,7 @@ void run_dummy_server(int port) {
         }
     } catch (std::exception & e) {
         std::cout << e.what() << std::endl;
-    } catch (boost::system::error_code & ec) {
+    } catch (asio::error_code & ec) {
         std::cout << ec.message() << std::endl;
     }
 }
@@ -81,7 +81,7 @@ void run_dummy_server(int port) {
 void run_test_timer(long value) {
     boost::asio::io_service ios;
     boost::asio::deadline_timer t(ios,boost::posix_time::milliseconds(value));
-    boost::system::error_code ec;
+    asio::error_code ec;
     t.wait(ec);
     BOOST_FAIL( "Test timed out" );
 }

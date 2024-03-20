@@ -70,10 +70,10 @@ namespace lib {
     #define _WEBSOCKETPP_ERROR_CODE_ENUM_NS_END_ }
 #else
     namespace errc = boost::system::errc;
-    using boost::system::error_code;
+    using asio::error_code;
     using boost::system::error_category;
     using boost::system::error_condition;
-    using boost::system::system_error;
+    using asio::system_error;
     #define _WEBSOCKETPP_ERROR_CODE_ENUM_NS_START_ namespace boost { namespace system {
     #define _WEBSOCKETPP_ERROR_CODE_ENUM_NS_END_ }}
 #endif
